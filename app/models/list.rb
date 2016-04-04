@@ -1,0 +1,6 @@
+class List < ApplicationRecord
+  has_many :items
+  belongs_to :user
+
+  validates :name, length: { minimum: 1, maximum: 100 }, presence: true
+end
