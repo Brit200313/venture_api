@@ -8,7 +8,7 @@ RSpec.describe Api::ItemsController, type: :controller do
 
   it "POST create" do
     http_login
-    post :create, item: {name: "Fancy Item"}, list_id: the_list.id
+    post :create, params: {item: {name: "Fancy Item"}, list_id: the_list.id}
     expect(response).to have_http_status(200)
   end
 end

@@ -4,10 +4,17 @@ RSpec.describe Api::ListsController, type: :controller do
   include AuthHelper
 
   let(:the_user) { FactoryGirl.create(:user) }
+  let(:list_to_delete) { FactoryGirl.create(:list, user_id: the_user.id) }
 
   it "POST create" do
     http_login
-    post :create, list: {name: "Fancy List"}, user_id: the_user.id
+    post :create, params: {list: {name: "Fancy List"}, user_id: the_user.id}
     expect(response).to have_http_status(200)
+  end
+
+  it "DELETE delete" do
+    http_login
+    delete :destroy, params: {id: list_to_delete.id, user_id: the_user.id}
+    expect(response).to have_http_status(204)
   end
 end
