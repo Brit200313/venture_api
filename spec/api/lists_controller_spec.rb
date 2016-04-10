@@ -4,11 +4,18 @@ RSpec.describe Api::ListsController, type: :controller do
   include AuthHelper
 
   let(:the_user) { FactoryGirl.create(:user) }
+  let(:list_to_update) { FactoryGirl.create(:list, user_id: the_user.id) }
   let(:list_to_delete) { FactoryGirl.create(:list, user_id: the_user.id) }
 
   it "POST create" do
     http_login
     post :create, params: {list: {name: "Fancy List"}, user_id: the_user.id}
+    expect(response).to have_http_status(200)
+  end
+
+  it "PUT update" do
+    http_login
+    put :update, params: {list: {permission: "private"}, user_id: the_user.id, id: list_to_update.id}
     expect(response).to have_http_status(200)
   end
 

@@ -22,9 +22,19 @@ class Api::ListsController < ApiController
     end
   end
 
+  def update
+    user = User.find_by_id(params[:user_id])
+    list = user.lists.find_by_id(params[:id])
+    if list.update(list_params)
+      render json: list
+    else
+      render json: { errors: list.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :permission)
   end
 
 end
