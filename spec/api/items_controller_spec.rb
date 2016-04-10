@@ -7,6 +7,12 @@ RSpec.describe Api::ItemsController, type: :controller do
   let(:the_list) { FactoryGirl.create(:list, user_id: the_user.id) }
   let(:the_item_to_update) { FactoryGirl.create(:item, list_id: the_list.id) }
 
+  it "GET index returns http success" do
+    http_login
+    get :index
+    expect(response).to have_http_status(:success)
+  end
+
   it "POST create" do
     http_login
     post :create, params: {item: {name: "Fancy Item"}, list_id: the_list.id}
