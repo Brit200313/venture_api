@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: 7485c8487ee60a591db500740f88699d4ba7c71c
+  specs:
+    active_model_serializers (0.10.0.rc5)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
+
+GIT
   remote: git://github.com/rails/rails.git
   revision: 59bf226890dcd91511ea5b90a87d3ad92f54d8b3
   specs:
@@ -61,8 +70,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    active_model_serializers (0.9.4)
-      activemodel (>= 3.2)
     arel (7.0.0)
     bcrypt (3.1.11)
     builder (3.2.2)
@@ -175,7 +182,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers!
   bcrypt
   factory_girl_rails
   faker
